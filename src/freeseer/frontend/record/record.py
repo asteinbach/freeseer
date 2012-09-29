@@ -26,6 +26,7 @@ import logging
 import os
 import sys
 import time
+import subprocess
 
 from PyQt4 import QtGui, QtCore
 
@@ -600,6 +601,8 @@ class RecordApp(QtGui.QMainWindow):
     def open_video_directory(self):
         if sys.platform.startswith("linux"):
             os.system("xdg-open %s" % self.core.config.videodir)
+        elif sys.platform.startswith("win32"):
+            subprocess.Popen("explorer %s" % self.core.config.videodir)
         else:
             logging.info("Error: This command is not supported on the current OS.")
     
