@@ -319,7 +319,8 @@ class QtDBConnector():
         """
         Drops the failures (reports) table from the database
         """
-        query = QtSql.QSqlQuery('''DROP TABLE IF EXISTS failures''')
+        query = QtSql.QSqlQuery('''DELETE FROM failures''')
+        logging.info("Report database cleared.")
         
     def get_report(self, talkid):
         """
